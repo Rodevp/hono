@@ -1,4 +1,3 @@
-import { serve } from '@hono/node-server'
 import { Hono } from 'hono'
 import Top from './layout'
 
@@ -20,13 +19,6 @@ app.patch('/posts/:id', (c) => c.text(`${c.req.param('id')} is partial updated!`
 
 app.delete('/posts/:id', (c) => c.text(`${c.req.param('id')} is deleted!`, 200))
 
-app.get('/jsx', (C) => C.render(<Top messages={['Good Morning', 'Good Evening', 'Good Night']}  ></Top>))
+app.get('/jsx', (C) => C.html(<Top messages={['Good Morning', 'Good Evening', 'Good Night']}></Top>))
 
-
-const port = 3000
-console.log(`Server is running on port ${port}`)
-
-serve({
-  fetch: app.fetch,
-  port
-})
+export default app
