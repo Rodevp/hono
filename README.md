@@ -1,2 +1,0 @@
-# hono
-hono-course
